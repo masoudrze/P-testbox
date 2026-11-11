@@ -27,7 +27,7 @@ class LoginPage(BasePage):
         )
 
         self.error_message: Locator = page.locator(
-            "div[role='alert']"
+            "div[role='alert'][aria-describedby='notistack-snackbar']"
         )
 
     def login(self, username: str, password: str) -> None:
