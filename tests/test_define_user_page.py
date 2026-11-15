@@ -1,53 +1,60 @@
-
+import re
 import pytest
-from playwright.sync_api import Page, expect
 
+from playwright.sync_api import Page, expect
 from pages.login_page import LoginPage
 from pages.define_user_page import DefineUserPage
 
-import re
 
 @pytest.fixture
-def login_page(page: Page, base_url: str) -> LoginPage:
+def login_page(page: Page) -> LoginPage:
     login = LoginPage(page)
-    login.open(base_url)
+    login.open()
     return login
 
+
 @pytest.fixture
-def define_user_page(page: Page, base_url: str) -> DefineUserPage:
-    defineUser = DefineUserPage(page)
-    defineUser.open(base_url)
-    return defineUser
+def define_user_page(page: Page) -> DefineUserPage:
+    return DefineUserPage(page)
 
 
+def test_define_user(
+    login_page: LoginPage,
+    define_user_page: DefineUserPage
+):
+    # Step 1: Login
+    login_page.login("masoud", "123456")
 
-
-
-def test_login_with_valid_credentials(login_page: LoginPage):
-    # Replace with credentials from your test environment.
-    username = "masoud"
-    password = "123456"
-
-    login_page.login(username, password)
-
-    # This test assumes login completes without OTP.
-    # If OTP is required, implement OTP handling first.
+    # Step 2: Wait for dashboard
     expect(login_page.page).to_have_url(
         re.compile(r".*/admin/dashboard/?$"),
-        timeout=30000
+        timeout=120000
     )
 
-def test_define_user(login_page: LoginPage,define_user_page:DefineUserPage):
-    username = "masoud"
-    password = "123456"
+    # Step 3: Open define user page
+    define_user_page.open("/admin/users/create")
 
-    login_page.login(username, password)
+    # Step 4: Fill and submit user form
+    define_user_page.define_user(
+        first_name="احسان7",
+        last_name="احسانی7",
+        national_code="0480747481",
+        mobile="09127712038",
+        user_name="ehsan7",
+        password="Aa123456",
+        role_name="cadmin"
+    )
+    # expect(define_user_page.error_message).to_have_text(
+    #     'کاربر با موفقیت ایجاد شد.'
+    # )
 
-    first_name="احسان"
-    last_name="احسانی"
-    national_code="0480747474"
-    mobile="09127712038"
-    user_name="ehsan"
-    password="Aa123456"
-    role="cadmin"
-    define_user_page.define_user( first_name,last_name,national_code,mobile,user_name,password,role)
+    expect(define_user_page.error_message.filter(
+        has_text="کاربر با موفقیت ایجاد شد"
+        ).first
+    ).to_be_visible()
+
+
+    # expect(define_user_page.page).to_have_url(
+    # re.compile(r".*/list/?$"),
+    # timeout=30000
+    # )
