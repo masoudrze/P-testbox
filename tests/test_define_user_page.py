@@ -13,6 +13,7 @@ def login_page(page: Page, base_url: str) -> LoginPage:
     login.open(base_url)
     return login
 
+@pytest.fixture
 def define_user_page(page: Page, base_url: str) -> DefineUserPage:
     defineUser = DefineUserPage(page)
     defineUser.open(base_url)
@@ -42,11 +43,11 @@ def test_define_user(login_page: LoginPage,define_user_page:DefineUserPage):
 
     login_page.login(username, password)
 
-    first_name="احسان",
-    last_name="احسانی",
-    national_code="0480747474",
-    mobile="09127712038",
-    user_name="ehsan",
-    password="Aa123456",
+    first_name="احسان"
+    last_name="احسانی"
+    national_code="0480747474"
+    mobile="09127712038"
+    user_name="ehsan"
+    password="Aa123456"
     role="cadmin"
     define_user_page.define_user( first_name,last_name,national_code,mobile,user_name,password,role)

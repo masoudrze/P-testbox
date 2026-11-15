@@ -8,15 +8,9 @@ from core.config import settings
 
 class DefineUserPage(BasePage):
 
-    PATH = "/admin/users/create"
 
     def __init__(self, page: Page) -> None:
         super().__init__(page)
-
-
-        def open(self) -> None:
-            url = f"{settings.base_url.rstrip('/')}{self.PATH}"
-            super().open(url)
 
         # Locators
         self.first_name: Locator = page.locator(
@@ -70,26 +64,19 @@ class DefineUserPage(BasePage):
                      mobile: str,
                      user_name: str,
                      password: str,
-                     role: str,) -> None:
+                     role_name: str,) -> None:
         """Enter user info and submit the define user form."""
+
+        self.open("/admin/users/create")
         self.first_name.fill(first_name)
         self.last_name.fill(last_name)
         self.national_code.fill(national_code)
         self.mobile.fill(mobile)
         self.user_name.fill(user_name)
         self.password.fill(password)
-        self.role.click()
-        self.select_combobox(self.role,role)
+        self.select_role(role_name)
         self.submit.click()
 
-    def select_role(self, role_name: str) -> None:
-        self.role.click()
-
-        self.page.get_by_role(
-            "option",
-            name=role_name,
-            exact=True
-        ).click()
 
     def get_error_message(self) -> str:
         """Return the displayed login error message."""

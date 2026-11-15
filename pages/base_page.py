@@ -24,7 +24,7 @@ class BasePage:
     def select_combobox(self,combobox: Locator,option: Locator) -> None:
         combobox.click()
         option.click()
-        
+
     def get_text(self, selector: str) -> str:
         return self.find(selector).inner_text()
 
@@ -47,3 +47,8 @@ class BasePage:
 
     def get_url(self) -> str:
         return self.page.url
+
+    def open(self, path: str = "") -> None:
+        """Navigate to a page using the configured base URL."""
+        url = f"{settings.base_url.rstrip('/')}/{path.lstrip('/')}"
+        self.page.goto(url)
