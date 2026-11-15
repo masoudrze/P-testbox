@@ -19,6 +19,7 @@ __pycache__/
 
 # Test artifacts
 artifacts/reports/*
+artifacts/test-results/*
 artifacts/screenshots/*
 !artifacts/reports/.gitkeep
 !artifacts/screenshots/.gitkeep
@@ -42,14 +43,3 @@ htmlcov/
 .DS_Store
 Thumbs.db
 
-# Local browser drivers
-chromedriver
-chromedriver.exe
-geckodriver
-geckodriver.exe
-
-check_driver.py
-
-#chrome driver
-
-drivers\chromedriver.exe
