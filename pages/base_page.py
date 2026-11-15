@@ -21,6 +21,10 @@ class BasePage:
     def type(self, selector: str, value: str) -> None:
         self.find(selector).fill(value)
 
+    def select_combobox(self,combobox: Locator,option: Locator) -> None:
+        combobox.click()
+        option.click()
+        
     def get_text(self, selector: str) -> str:
         return self.find(selector).inner_text()
 
