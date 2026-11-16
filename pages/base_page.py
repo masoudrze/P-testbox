@@ -9,9 +9,6 @@ class BasePage:
         self.page = page
         self.page.set_default_timeout(settings.default_timeout)
 
-    # def open(self, url: str | None = None) -> None:
-    #     self.page.goto(url or settings.base_url)
-
     def find(self, selector: str) -> Locator:
         return self.page.locator(selector)
 

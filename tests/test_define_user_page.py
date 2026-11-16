@@ -31,10 +31,7 @@ def test_define_user(
         timeout=120000
     )
 
-    # Step 3: Open define user page
-    define_user_page.open("/admin/users/create")
-
-    # Step 4: Fill and submit user form
+    # Step 3: Fill and submit user form
     define_user_page.define_user(
         first_name="احسان7",
         last_name="احسانی7",
