@@ -36,7 +36,7 @@ class LoginPage(BasePage):
         self.password.fill(password)
         self.submit.click()
 
-    def forgot_password(self) -> None:
+    def navigate_forgot_password(self) -> None:
         """Navigate to the forgot password page."""
         self.forgot_password_link.click()
 

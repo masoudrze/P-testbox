@@ -58,7 +58,7 @@ def test_login_with_valid_credentials(login_page: LoginPage):
 
 
 def test_forgot_password_navigation(login_page: LoginPage):
-    login_page.forgot_password()
+    login_page.navigate_forgot_password()
 
     expect(login_page.page).to_have_url(
         re.compile(r".*/auth/forget-password/?$")
