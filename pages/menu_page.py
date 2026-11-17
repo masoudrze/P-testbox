@@ -133,13 +133,13 @@ class MenuPage(BasePage):
 
 #   مديريت کاربران
 
-    def navigate_users_management_menu(self) -> None:
+    def navigate_users_management_menu_define(self) -> None:
         self.hover_and_click(
             self.users_management_menu,
             self.users_define_page
         )
 
-    def navigate_users_management_menu(self) -> None:
+    def navigate_users_management_menu_list(self) -> None:
         self.hover_and_click(
             self.users_management_menu,
             self.users_list_page
@@ -147,25 +147,25 @@ class MenuPage(BasePage):
 
 #    مديريت نقش و دسترسي
 
-    def navigate_roles_management_menu(self) -> None:
+    def navigate_roles_management_menu_define(self) -> None:
         self.hover_and_click(
             self.roles_management_menu,
             self.roles_define_page
         )
 
-    def navigate_roles_management_menu(self) -> None:
+    def navigate_roles_management_menu_list(self) -> None:
         self.hover_and_click(
             self.roles_management_menu,
             self.roles_list_page
         )
 
-    def navigate_roles_management_menu(self) -> None:
+    def navigate_roles_columns_limit_management_menu_define(self) -> None:
         self.hover_and_click(
             self.roles_management_menu,
             self.columns_limit_define_page
         )
 
-    def navigate_roles_management_menu(self) -> None:
+    def navigate_roles_columns_limit_management_menu_list(self) -> None:
         self.hover_and_click(
             self.roles_management_menu,
             self.columns_limit_list_page
@@ -173,13 +173,13 @@ class MenuPage(BasePage):
 
 #  مديريت منابع داده
 
-    def navigate_data_sources_management_menu(self) -> None:
+    def navigate_data_sources_management_menu_define(self) -> None:
         self.hover_and_click(
             self.data_sources_management_menu,
             self.data_sources_define_page
         )
 
-    def navigate_data_sources_management_menu(self) -> None:
+    def navigate_data_sources_management_menu_list(self) -> None:
         self.hover_and_click(
             self.data_sources_management_menu,
             self.data_sources_list_page
@@ -187,7 +187,7 @@ class MenuPage(BasePage):
 
 #  پايش رويداد ها (لاگ سيستم)
 
-    def navigate_auditlogs_management_menu(self) -> None:
+    def navigate_auditlogs_management_menu_list(self) -> None:
         self.hover_and_click(
             self.auditlogs_management_menu,
             self.auditlogs_list_page
@@ -195,13 +195,13 @@ class MenuPage(BasePage):
 
 #  مديريت دسته بندي گزارشات
 
-    def navigate_reports_category_management_menu(self) -> None:
+    def navigate_reports_category_management_menu_define(self) -> None:
         self.hover_and_click(
             self.reports_category_management_menu,
             self.reports_category_define_page
         )
 
-    def navigate_reports_category_management_menu(self) -> None:
+    def navigate_reports_category_management_menu_list(self) -> None:
         self.hover_and_click(
             self.reports_category_management_menu,
             self.reports_category_list_page
@@ -223,7 +223,7 @@ class MenuPage(BasePage):
 
 # گزارشات سازمانی
 
-    def navigate_organization_reports_management_menu(self) -> None:
+    def navigate_organization_reports_management_menu_list(self) -> None:
         self.hover_and_click(
             self.organization_reports_management_menu,
             self.organization_reports_list_page
