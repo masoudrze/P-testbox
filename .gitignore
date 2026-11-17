@@ -23,6 +23,7 @@ artifacts/test-results/*
 artifacts/screenshots/*
 !artifacts/reports/.gitkeep
 !artifacts/screenshots/.gitkeep
+artifacts/allure-results/
 
 # Allure artifacts
 allure-results/
