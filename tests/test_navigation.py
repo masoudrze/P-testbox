@@ -20,20 +20,34 @@ def menu_page(page: Page) -> MenuPage:
 
 
 
-def test_navigate_menu_pages_dashboard(login_page: LoginPage, menu_page: MenuPage):
 
+def test_navigate_organization_reports(
+    login_page: LoginPage,
+    menu_page: MenuPage
+):
     login_page.login("masoud", "123456")
 
-    # Step 2: Wait for dashboard
     expect(login_page.page).to_have_url(
         re.compile(r".*/admin/dashboard/?$"),
         timeout=120000
     )
 
-    # menu_page.navigate_dashboard()
-    menu_page.navigate_organization_reports()
+    menu_page.navigate_reports_management_menu_define()
 
-    expect(login_page.page).to_have_url(
-        re.compile(r".*/admin/dashboardoo/?$"),
-        timeout=120000
+    expect(menu_page.page).to_have_url(
+        re.compile(r".*/admin/reports/create/?$")
     )
+
+    menu_page.navigate_reports_management_menu_list()
+
+    expect(menu_page.page).to_have_url(
+        re.compile(r".*/admin/reports/?$")
+    )
+
+    menu_page.navigate_organization_reports_management_menu()
+
+    expect(menu_page.page).to_have_url(
+        re.compile(r".*/admin/organizationreports/?$")
+    )
+
+

@@ -37,6 +37,12 @@ class BasePage:
     def hover(self, selector: str) -> None:
         self.find(selector).hover()
 
+    def hover_and_click(self,menu: Locator,option: Locator) -> None:
+        menu.hover()
+        expect(option).to_be_visible()
+        option.click()
+
+
     def get_attribute(
         self, selector: str, attribute: str
     ) -> str | None:

@@ -43,7 +43,6 @@ def test_login_with_valid_credentials(login_page: LoginPage):
     password = "123456"
 
     login_page.login(username, password)
-
     # Step 2: Wait for OTP page
     # otp_page = OTPPage(login_page.page)
     # otp_page.page.wait_for_url("**/auth/enter-code")
@@ -51,6 +50,11 @@ def test_login_with_valid_credentials(login_page: LoginPage):
     # otp_page.prompt_otp()
     # This test assumes login completes without OTP.
     # If OTP is required, implement OTP handling first.
+
+    expect(login_page.error_message).to_have_text(
+        "با موفقیت وارد شدید.",timeout=30000
+    )
+
     expect(login_page.page).to_have_url(
         re.compile(r".*/admin/dashboard/?$"),
         timeout=30000
