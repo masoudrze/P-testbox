@@ -1,0 +1,15 @@
+{
+  "valid": [
+    {
+      "role_name": "نقش تست",
+      "expected": "عملیات با موفقیت انجام شد"
+    }
+  ],
+  "invalid": [
+    {
+      "role_name": "         ",
+      "expected": "title:این فیلد نمی‌تواند خالی باشد."
+    }
+  ],
+  "boundary": []
+}

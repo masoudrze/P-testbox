@@ -1,0 +1,23 @@
+{
+  "valid": [
+    {
+      "first_name": "نقش تست",
+      "last_name":"",
+      "national_code":"",
+      "mobile":"",
+      "user_name":"",
+      "password":"",
+      "role_name":"",
+      "expected": "عملیات با موفقیت انجام شد"
+    }
+  ],
+  "invalid": [
+    {
+      "name": "         ",
+      "expected": "title:این فیلد نمی‌تواند خالی باشد."
+    }
+  ],
+  "boundary": []
+}
+
+
