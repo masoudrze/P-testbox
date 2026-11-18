@@ -1,0 +1,17 @@
+{
+  "short_password": [
+    {
+      "user_name": "test",
+      "password":"test",
+      "expected": "password:مطمعن شوید طول این مقدار حداقل 6 است."
+    }
+  ],
+  "invalid_credentials": [
+    {
+      "user_name": "test",
+      "password":"test123456",
+      "expected": "نام کاربری یا کلمه عبور اشتباه می باشد"
+    }
+  ],
+  "boundary": []
+}
