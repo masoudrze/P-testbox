@@ -10,9 +10,17 @@ load_dotenv()
 class Settings:
     base_url: str
     default_timeout: int
+    test_username: str
+    test_password: str
 
 
 settings = Settings(
     base_url=os.getenv("BASE_URL", ""),
     default_timeout=int(os.getenv("DEFAULT_TIMEOUT", "10000")),
+    test_username=os.getenv("TEST_USERNAME", ""),
+    test_password=os.getenv("TEST_PASSWORD", ""),
 )
+
+
+
+
