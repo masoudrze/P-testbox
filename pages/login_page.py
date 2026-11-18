@@ -22,9 +22,9 @@ class LoginPage(BasePage):
             "div[role='alert'][aria-describedby='notistack-snackbar']"
         )
 
-    def login(self, username: str, password: str) -> None:
+    def login(self, user_name: str, password: str) -> None:
         """Enter credentials and submit the login form."""
-        self.username.fill(username)
+        self.username.fill(user_name)
         self.password.fill(password)
         self.submit.click()
 
