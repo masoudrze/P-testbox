@@ -1,4 +1,3 @@
-import re
 import pytest
 
 from playwright.sync_api import Page, expect
@@ -12,10 +11,8 @@ def define_role_page(authenticated_page: Page) -> DefineRolePage:
     return DefineRolePage(authenticated_page)
 
 
-@pytest.mark.parametrize(
-    "data",
-    role_data["valid"],
-)
+@pytest.mark.parametrize("data",role_data["valid"],)
+
 def test_define_role(
     define_role_page: DefineRolePage,
     data: dict,
