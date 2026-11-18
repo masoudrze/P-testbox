@@ -1,26 +1,18 @@
-
 from playwright.sync_api import Page, Locator
 
 from pages.base_page import BasePage
 
 
 class LoginPage(BasePage):
-
     def __init__(self, page: Page) -> None:
         super().__init__(page)
 
         # Locators
-        self.username: Locator = page.locator(
-            "input[name='username']"
-        )
+        self.username: Locator = page.locator("input[name='username']")
 
-        self.password: Locator = page.locator(
-            "input[name='password']"
-        )
+        self.password: Locator = page.locator("input[name='password']")
 
-        self.submit: Locator = page.locator(
-            "button[type='submit']"
-        )
+        self.submit: Locator = page.locator("button[type='submit']")
 
         self.forgot_password_link: Locator = page.locator(
             "a[href='/auth/forget-password']"

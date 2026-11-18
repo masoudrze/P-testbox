@@ -1,4 +1,3 @@
-
 from playwright.sync_api import Page, Locator, expect
 
 from core.config import settings
@@ -18,7 +17,7 @@ class BasePage:
     def type(self, selector: str, value: str) -> None:
         self.find(selector).fill(value)
 
-    def select_combobox(self,combobox: Locator,option: Locator) -> None:
+    def select_combobox(self, combobox: Locator, option: Locator) -> None:
         combobox.click()
         option.click()
 
@@ -37,15 +36,12 @@ class BasePage:
     def hover(self, selector: str) -> None:
         self.find(selector).hover()
 
-    def hover_and_click(self,menu: Locator,option: Locator) -> None:
+    def hover_and_click(self, menu: Locator, option: Locator) -> None:
         menu.hover()
         expect(option).to_be_visible()
         option.click()
 
-
-    def get_attribute(
-        self, selector: str, attribute: str
-    ) -> str | None:
+    def get_attribute(self, selector: str, attribute: str) -> str | None:
         return self.find(selector).get_attribute(attribute)
 
     def get_url(self) -> str:

@@ -1,4 +1,3 @@
-
 from playwright.sync_api import Page, Locator
 
 from pages.base_page import BasePage
@@ -7,8 +6,6 @@ from core.config import settings
 
 
 class DefineDataSourcePage(BasePage):
-
-
     def __init__(self, page: Page) -> None:
         super().__init__(page)
 
@@ -17,43 +14,31 @@ class DefineDataSourcePage(BasePage):
             "input[name='data_source_title']"
         )
 
-        self.ip: Locator = page.locator(
-            "input[name='ip']"
-        )
+        self.ip: Locator = page.locator("input[name='ip']")
 
-        self.port: Locator = page.locator(
-            "input[name='port']"
-        )
+        self.port: Locator = page.locator("input[name='port']")
 
-        self.user_name: Locator = page.locator(
-            "input[name='user_name']"
-        )
+        self.user_name: Locator = page.locator("input[name='user_name']")
 
-        self.password: Locator = page.locator(
-            "input[name='password']"
-        )
+        self.password: Locator = page.locator("input[name='password']")
 
-        self.service_name: Locator = page.locator(
-            "input[name='service_name']"
-        )
+        self.service_name: Locator = page.locator("input[name='service_name']")
 
-        self.submit: Locator = page.locator(
-            "button[type='submit']"
-        )
+        self.submit: Locator = page.locator("button[type='submit']")
 
         self.error_message: Locator = page.locator(
             "div[role='alert'][aria-describedby='notistack-snackbar']"
         )
 
-
-
-    def define_data_source(self,
-                     data_source_title: str,
-                     ip: str,
-                     port: str,
-                     user_name: str,
-                     password: str,
-                     service_name: str) -> None:
+    def define_data_source(
+        self,
+        data_source_title: str,
+        ip: str,
+        port: str,
+        user_name: str,
+        password: str,
+        service_name: str,
+    ) -> None:
         """Enter user info and submit the define user form."""
 
         self.open("/admin/sources/create")
@@ -64,7 +49,6 @@ class DefineDataSourcePage(BasePage):
         self.password.fill(password)
         self.service_name.fill(service_name)
         self.submit.click()
-
 
     def get_error_message(self) -> str:
         """Return the displayed login error message."""
