@@ -35,7 +35,4 @@ def test_define_user(define_user_page: DefineUserPage,data: dict):
         define_user_page.error_message.filter(has_text="کاربر با موفقیت ایجاد شد").first
     ).to_be_visible()
 
-    # expect(define_user_page.page).to_have_url(
-    # re.compile(r".*/list/?$"),
-    # timeout=30000
-    # )
+

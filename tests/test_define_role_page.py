@@ -1,5 +1,5 @@
 import pytest
-
+from uuid import uuid4
 from playwright.sync_api import Page, expect
 from pages.define_role_page import DefineRolePage
 from core.test_data_loader import load_test_data
@@ -17,8 +17,10 @@ def test_define_role(
     define_role_page: DefineRolePage,
     data: dict,
 ):
+    unique_id = uuid4().hex[:8]
+    role_name_u = f"{data['role_name']}_{unique_id}"
     define_role_page.define_role(
-        role_name=data["role_name"]
+        role_name=role_name_u
     )
 
     expect(
