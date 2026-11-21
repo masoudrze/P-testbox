@@ -22,10 +22,10 @@ def test_login_with_short_password(login_page: LoginPage,data: dict,):
     ).to_be_visible()
 
     expect(login_page.page).to_have_url(
-        re.compile(URL_PATTERN)
+        re.compile(re.escape(data["URL_PATTERN"]) + r"/?$")
     )
 
-    # expect(login_page.page).to_have_url(re.compile(r".*/auth/login/?$"))
+
 
 @pytest.mark.parametrize("data",login_data["invalid_credentials"],)
 def test_login_with_invalid_credentials(login_page: LoginPage,data: dict,):
@@ -40,7 +40,10 @@ def test_login_with_invalid_credentials(login_page: LoginPage,data: dict,):
         ).first
     ).to_be_visible()
 
-    # expect(login_page.page).to_have_url(re.compile(r".*/auth/login/?$"))
+    expect(login_page.page).to_have_url(
+        re.compile(re.escape(data["URL_PATTERN"]) + r"/?$")
+    )
+
 
 @pytest.mark.parametrize("data",login_data["valid"],)
 def test_login_with_valid_credentials(login_page: LoginPage,data: dict,):
@@ -48,16 +51,18 @@ def test_login_with_valid_credentials(login_page: LoginPage,data: dict,):
 
 
     login_page.login(settings.test_username, settings.test_password)
+    
+    expect(login_page.page).to_have_url(
+        re.compile(re.escape(data["URL_PATTERN"]) + r"/?$"), timeout=30000
+    )
+
     expect(
         login_page.error_message.filter(
             has_text=data["expected"]
         ).first
     ).to_be_visible()
-    # expect(login_page.error_message).to_have_text("با موفقیت وارد شدید", timeout=30000)
 
-    expect(login_page.page).to_have_url(
-        re.compile(r".*/admin/dashboard/?$"), timeout=30000
-    )
+
 
 
 def test_forgot_password_navigation(login_page: LoginPage):

@@ -26,9 +26,15 @@ class DefineDataSourcePage(BasePage):
 
         self.submit: Locator = page.locator("button[type='submit']")
 
-        self.error_message: Locator = page.locator(
-            "div[role='alert'][aria-describedby='notistack-snackbar']"
+        # self.error_message: Locator = page.locator(
+        #     "div[role='alert'][aria-describedby='notistack-snackbar']"
+        # )
+
+        self.error_message: Locator = page.get_by_role(
+            "alert"
         )
+
+
 
     def define_data_source(
         self,

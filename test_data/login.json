@@ -4,21 +4,23 @@
       "user_name": "test",
       "password":"test",
       "expected": "password:مطمعن شوید طول این مقدار حداقل 6 است.",
-      "URL_PATTERN":"/auth/login/"
+      "URL_PATTERN":"/auth/login"
     }
   ],
   "invalid_credentials": [
     {
       "user_name": "test",
       "password":"test123456",
-      "expected": "نام کاربری یا کلمه عبور اشتباه می باشد"
+      "expected": "نام کاربری یا کلمه عبور اشتباه می باشد",
+      "URL_PATTERN":"/auth/login"
     }
   ],
   "valid":[
     {
       "user_name":"test",
       "password":"test",
-      "expected":"با موفقیت وارد شدید"
+      "expected":"با موفقیت وارد شدید",
+      "URL_PATTERN":"/admin/dashboard"
     }
   ],
   "boundary": []

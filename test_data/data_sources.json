@@ -1,0 +1,53 @@
+ {
+  "valid": [
+    {
+      "data_source_title": "منبع داده تست 12",
+      "ip":"192.168.1.1",
+      "port":"1234",
+      "user_name":"user",
+      "password":"pass",
+      "service_name":"service",
+      "expected": "منبع داده با موفقیت ایجاد شد.",
+      "URL_PATTERN":"/admin/sources"
+    }
+  ],
+  "invalid_ip": [
+    {
+      "data_source_title": "منبع داده تست 12",
+      "ip":"0000",
+      "port":"1234",
+      "user_name":"user",
+      "password":"pass",
+      "service_name":"service",
+      "expected": "ip:یک نشانی IPv4 یا IPv6 معتبر وارد کنید.",
+      "URL_PATTERN":"/sources/create"
+    }
+  ],
+    "invalid_port_num": [
+    {
+      "data_source_title": "منبع داده تست 12",
+      "ip":"192.168.1.1",
+      "port":"0000",
+      "user_name":"user",
+      "password":"pass",
+      "service_name":"service",
+      "expected": "port:پورت باید بین ۱ تا ۶۵۵۳۵ باشد.",
+      "URL_PATTERN":"/sources/create"
+    }
+  ],
+      "invalid_port_char": [
+    {
+      "data_source_title": "منبع داده تست 12",
+      "ip":"192.168.1.1",
+      "port":"a",
+      "user_name":"user",
+      "password":"pass",
+      "service_name":"service",
+      "expected": "port:پورت باید فقط شامل عدد باشد.",
+      "URL_PATTERN":"/sources/create"
+    }
+  ],
+
+
+  "boundary": []
+}       
