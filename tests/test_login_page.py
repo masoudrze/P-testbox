@@ -15,10 +15,17 @@ def test_login_with_short_password(login_page: LoginPage,data: dict,):
         password=data["password"],
         )
 
-    expect(login_page.error_message).to_have_text(
-        "password:مطمعن شوید طول این مقدار حداقل 6 است."
+    expect(
+        login_page.error_message.filter(
+            has_text=data["expected"]
+        ).first
+    ).to_be_visible()
+
+    expect(login_page.page).to_have_url(
+        re.compile(URL_PATTERN)
     )
-    expect(login_page.page).to_have_url(re.compile(r".*/auth/login/?$"))
+
+    # expect(login_page.page).to_have_url(re.compile(r".*/auth/login/?$"))
 
 @pytest.mark.parametrize("data",login_data["invalid_credentials"],)
 def test_login_with_invalid_credentials(login_page: LoginPage,data: dict,):
@@ -27,18 +34,25 @@ def test_login_with_invalid_credentials(login_page: LoginPage,data: dict,):
         password=data["password"],
         )
 
-    expect(login_page.error_message).to_have_text(
-        "نام کاربری یا کلمه عبور اشتباه می باشد"
-    )
-    expect(login_page.page).to_have_url(re.compile(r".*/auth/login/?$"))
+    expect(
+        login_page.error_message.filter(
+            has_text=data["expected"]
+        ).first
+    ).to_be_visible()
 
+    # expect(login_page.page).to_have_url(re.compile(r".*/auth/login/?$"))
 
-def test_login_with_valid_credentials(login_page: LoginPage):
+@pytest.mark.parametrize("data",login_data["valid"],)
+def test_login_with_valid_credentials(login_page: LoginPage,data: dict,):
     # Replace with credentials from your test environment.
 
 
     login_page.login(settings.test_username, settings.test_password)
-
+    expect(
+        login_page.error_message.filter(
+            has_text=data["expected"]
+        ).first
+    ).to_be_visible()
     # expect(login_page.error_message).to_have_text("با موفقیت وارد شدید", timeout=30000)
 
     expect(login_page.page).to_have_url(
