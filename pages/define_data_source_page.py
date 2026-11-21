@@ -30,11 +30,7 @@ class DefineDataSourcePage(BasePage):
         #     "div[role='alert'][aria-describedby='notistack-snackbar']"
         # )
 
-        self.error_message: Locator = page.get_by_role(
-            "alert"
-        )
-
-
+        self.error_message: Locator = page.get_by_role("alert")
 
     def define_data_source(
         self,

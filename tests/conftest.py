@@ -13,14 +13,11 @@ def base_url():
     return settings.base_url
 
 
-
 @pytest.fixture
 def login_page(page: Page) -> LoginPage:
     login = LoginPage(page)
     login.open()
     return login
-
-
 
 
 @pytest.fixture(scope="session")
@@ -31,15 +28,9 @@ def auth_state(browser: Browser):
 
         login = LoginPage(page)
         login.open()
-        login.login(
-            settings.test_username,
-            settings.test_password
-        )
+        login.login(settings.test_username, settings.test_password)
 
-        expect(page).to_have_url(
-            re.compile(r".*/admin/dashboard/?$"),
-            timeout=120000
-        )
+        expect(page).to_have_url(re.compile(r".*/admin/dashboard/?$"), timeout=120000)
 
         return context.storage_state()
     finally:
@@ -48,24 +39,17 @@ def auth_state(browser: Browser):
 
 @pytest.fixture
 def authenticated_page(
-    browser: Browser,
-    auth_state: dict
+    browser: Browser, auth_state: dict
 ) -> Generator[Page, None, None]:
 
-    context = browser.new_context(
-        storage_state=auth_state
-    )
+    context = browser.new_context(storage_state=auth_state)
 
     try:
         page = context.new_page()
 
-        page.goto(
-            f"{settings.base_url.rstrip('/')}/admin/dashboard"
-        )
+        page.goto(f"{settings.base_url.rstrip('/')}/admin/dashboard")
 
-        expect(page).to_have_url(
-            re.compile(r".*/admin/dashboard/?$")
-        )
+        expect(page).to_have_url(re.compile(r".*/admin/dashboard/?$"))
 
         yield page
     finally:

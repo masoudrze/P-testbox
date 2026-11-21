@@ -6,12 +6,9 @@ from playwright.sync_api import Browser, Page, expect
 from pages.menu_page import MenuPage
 
 
-
-
 @pytest.fixture
 def menu_page(authenticated_page: Page) -> MenuPage:
     return MenuPage(authenticated_page)
-
 
 
 # مشاهده داشبورد

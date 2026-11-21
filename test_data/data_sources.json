@@ -1,19 +1,7 @@
  {
-  "valid": [
-    {
-      "data_source_title": "منبع داده تست 12",
-      "ip":"192.168.1.1",
-      "port":"1234",
-      "user_name":"user",
-      "password":"pass",
-      "service_name":"service",
-      "expected": "منبع داده با موفقیت ایجاد شد.",
-      "URL_PATTERN":"/admin/sources"
-    }
-  ],
   "invalid_ip": [
     {
-      "data_source_title": "منبع داده تست 12",
+      "data_source_title": "منبع داده تست 14",
       "ip":"0000",
       "port":"1234",
       "user_name":"user",
@@ -25,7 +13,7 @@
   ],
     "invalid_port_num": [
     {
-      "data_source_title": "منبع داده تست 12",
+      "data_source_title": "منبع داده تست 14",
       "ip":"192.168.1.1",
       "port":"0000",
       "user_name":"user",
@@ -37,7 +25,7 @@
   ],
       "invalid_port_char": [
     {
-      "data_source_title": "منبع داده تست 12",
+      "data_source_title": "منبع داده تست 14",
       "ip":"192.168.1.1",
       "port":"a",
       "user_name":"user",
@@ -47,7 +35,18 @@
       "URL_PATTERN":"/sources/create"
     }
   ],
-
+  "valid": [
+    {
+      "data_source_title": "منبع داده تست 14",
+      "ip":"192.168.1.1",
+      "port":"1234",
+      "user_name":"user",
+      "password":"pass",
+      "service_name":"service",
+      "expected": "منبع داده با موفقیت ایجاد شد.",
+      "URL_PATTERN":"/admin/sources"
+    }
+  ],
 
   "boundary": []
 }       

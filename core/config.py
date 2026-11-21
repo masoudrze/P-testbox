@@ -20,7 +20,3 @@ settings = Settings(
     test_username=os.getenv("TEST_USERNAME", ""),
     test_password=os.getenv("TEST_PASSWORD", ""),
 )
-
-
-
-
