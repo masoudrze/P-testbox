@@ -22,14 +22,15 @@ class ForgetPasswordPage(BasePage):
             "a[href='/auth/login']"
         )
 
-        self.error_message: Locator = page.locator(
-            "div[role='alert'][aria-describedby='notistack-snackbar']"
-        )
+        # self.error_message: Locator = page.locator(
+        #     "div[role='alert'][aria-describedby='notistack-snackbar']"
+        # )
+        self.error_message: Locator = page.get_by_role("alert")
 
     def forget_password(self, user_name: str, mobile: str) -> None:
         """Enter credentials and submit the login form."""
         self.forgot_password_link.click()
-        self.password.fill(mobile)
+        self.mobile.fill(mobile)
         self.username.fill(user_name)
         self.submit.click()
 

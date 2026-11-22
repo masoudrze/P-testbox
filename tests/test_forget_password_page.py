@@ -7,6 +7,13 @@ from core.test_data_loader import load_test_data
 
 forget_password_data = load_test_data("forget_password.json")
 
+@pytest.fixture
+def forget_password_page(page: Page) -> ForgetPasswordPage:
+    forget = ForgetPasswordPage(page)
+    forget.open()
+    return forget
+
+
 test_cases = [
     pytest.param(data, id=f"{category}_{index}")
     for category, items in forget_password_data.items()
@@ -26,7 +33,7 @@ def test_forget_password(
 
     expect(
         forget_password_page.error_message.filter(has_text=data["expected"]).first
-    ).to_be_visible(timeout=30000)
+    ).to_be_visible()
 
     expect(forget_password_page.page).to_have_url(
         re.compile(re.escape(data["URL_PATTERN"]) + r"/?$"), timeout=30000
