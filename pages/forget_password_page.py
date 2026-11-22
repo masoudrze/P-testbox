@@ -25,11 +25,13 @@ class ForgetPasswordPage(BasePage):
         # self.error_message: Locator = page.locator(
         #     "div[role='alert'][aria-describedby='notistack-snackbar']"
         # )
-        self.error_message: Locator = page.get_by_role("alert")
+        self.error_message: Locator = page.locator(".notistack-MuiContent-error")
+
+        # self.error_message = page.locator(".notistack-MuiContent-error")
 
     def forget_password(self, user_name: str, mobile: str) -> None:
         """Enter credentials and submit the login form."""
-        self.forgot_password_link.click()
+        # self.forgot_password_link.click()
         self.mobile.fill(mobile)
         self.username.fill(user_name)
         self.submit.click()

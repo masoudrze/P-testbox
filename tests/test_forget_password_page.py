@@ -10,7 +10,7 @@ forget_password_data = load_test_data("forget_password.json")
 @pytest.fixture
 def forget_password_page(page: Page) -> ForgetPasswordPage:
     forget = ForgetPasswordPage(page)
-    forget.open()
+    forget.open("/auth/forget-password")
     return forget
 
 
