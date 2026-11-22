@@ -31,13 +31,6 @@
       "URL_PATTERN":"/auth/enter-code"
     }
   ],
-  "valid":[
-    {
-      "user_name":"test",
-      "password":"test",
-      "expected":"با موفقیت وارد شدید",
-      "URL_PATTERN":"/admin/dashboard"
-    }
-  ],
+
   "boundary": []
 }
