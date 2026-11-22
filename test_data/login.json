@@ -15,6 +15,22 @@
       "URL_PATTERN":"/auth/login"
     }
   ],
+    "inactive_user": [
+    {
+      "user_name": "user",
+      "password":"Aa123456",
+      "expected": "کاربر غیر فعال می باشد",
+      "URL_PATTERN":"/auth/login"
+    }
+  ],
+    "no_access_user": [
+    {
+      "user_name": "test1",
+      "password":"Aa123456",
+      "expected": "کاربر هیچ‌گونه مجوز فعالی ندارد.",
+      "URL_PATTERN":"/auth/enter-code"
+    }
+  ],
   "valid":[
     {
       "user_name":"test",

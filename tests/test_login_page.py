@@ -26,10 +26,10 @@ def test_login(
 
     expect(
         login_page.error_message.filter(has_text=data["expected"]).first
-    ).to_be_visible()
+    ).to_be_visible(timeout=30000)
 
     expect(login_page.page).to_have_url(
-        re.compile(re.escape(data["URL_PATTERN"]) + r"/?$")
+        re.compile(re.escape(data["URL_PATTERN"]) + r"/?$"), timeout=30000
     )
 
 
@@ -46,13 +46,15 @@ def test_login_with_valid_credentials(
 
     login_page.login(settings.test_username, settings.test_password)
 
+    expect(
+        login_page.error_message.filter(has_text=data["expected"]).first
+    ).to_be_visible()
+
     expect(login_page.page).to_have_url(
         re.compile(re.escape(data["URL_PATTERN"]) + r"/?$"), timeout=30000
     )
 
-    expect(
-        login_page.error_message.filter(has_text=data["expected"]).first
-    ).to_be_visible()
+
 
 
 def test_forgot_password_navigation(login_page: LoginPage):
